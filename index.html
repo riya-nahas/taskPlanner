@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link href="./src/styles.css" rel="stylesheet" />
+    <title>Task Planner</title>
+  </head>
+  <body>
+    <header>
+      <h1 id="siteHeader">Task Planner</h1>
+      <span id="date-time"></span>
+    </header>
+    <main>
+      <div class="container">
+        <!-- Modal Form -->
+        <div id="modalForm">
+          <!-- Add Task Modal Button -->
+          <button
+            id="addTaskBtn"
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add Task
+          </button>
+
+          <!-- Modal Popup -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Add Task Header -->
+                <div class="modal-header">
+                  <div id="addTaskDiv">
+                    <div
+                      class="container d-flex justify-content-center"
+                      id="taskFormHeader"
+                    >
+                      <h1>Add Task</h1>
+                    </div>
+
+                    <!-- Add Task Form -->
+                    <form action="#" method="#">
+                      <div class="container" id="taskFormBox">
+                        <div class="row justify-content-end">
+                          <!-- For Successful Submit -->
+                          <h5 id="successfulSubmitMsg"></h5>
+                        </div>
+
+                        <!-- Task Name -->
+                        <div class="row">
+                          <div class="mb-3">
+                            <span class="errorSpan" id="taskNameError"></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="taskName"
+                              name="taskName"
+                              placeholder="Task Name"
+                              required
+                            />
+                          </div>
+
+                          <!-- Task Description -->
+                          <div class="mb-3">
+                            <span
+                              class="errorSpan"
+                              id="taskDescriptionError"
+                            ></span>
+                            <textarea
+                              class="form-control"
+                              name="taskText"
+                              id="taskText"
+                              cols="30"
+                              rows="5"
+                              placeholder="Add Task Description"
+                              required
+                            ></textarea>
+                          </div>
+                        </div>
+
+                        <!-- Task Assign  -->
+                        <div class="row">
+                          <div class="mb-3">
+                            <span class="errorSpan" id="taskAssignError"></span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="taskAssign"
+                              name="taskAssign"
+                              placeholder="Assigned to:"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <!-- Due date  Menu -->
+                        <div class="row">
+                          <span class="errorSpan" id="dueDateError"></span>
+                          <div class="mb-3">
+                            <label for="dueDate">Due Date: </label>
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="dueDate"
+                              name="dueDate"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <!-- Task Priority Dropdown Menu -->
+                        <div class="row">
+                          <div class="mb-3">
+                            <label for="taskPriority">Priority</label>
+                            <select
+                              name="'taskPriority"
+                              class="form-select"
+                              aria-label="Priority"
+                              id="taskPriority"
+                              aria-placeholder="Priority"
+                              required
+                            >
+                              <option value="Low">Low</option>
+                              <option value="Medium">Medium</option>
+                              <option value="High">High</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!--Task  Status Dropdown Menu -->
+                        <div class="row">
+                          <div class="mb-3">
+                            <label for="taskStatus">Status</label>
+                            <select
+                              name="taskStatus"
+                              class="form-select"
+                              aria-label="Status"
+                              id="taskStatus"
+                            >
+                              <option value="toDo">To Do</option>
+                              <option value="inProgress">In Progress</option>
+                              <option value="review">Review</option>
+                              <option value="complete">Completed</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- Submit/Close Buttons -->
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    id="cancelTaskFormBtn"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="submitTaskFormBtn"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- to do section-->
+          <section id="toDoList">
+            <h4 class="mainSubHeader">To do</h4>
+          </section>
+
+          <!-- In Progress -->
+          <section id="inProgress">
+            <h4 class="mainSubHeader">In progress</h4>
+          </section>
+
+          <!--Review section -->
+          <section id="review">
+            <h4 class="mainSubHeader">Review</h4>
+          </section>
+
+          <!-- Completed section -->
+          <section id="completed">
+            <h4 class="mainSubHeader">Completed</h4>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./src/taskManager.js"></script>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
